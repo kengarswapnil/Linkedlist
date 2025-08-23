@@ -1,0 +1,73 @@
+
+public class LinkedList{
+    public static class Node{
+        int data;
+        Node next;
+        
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+    
+    public static Node head;
+    public static Node tail;
+    
+    //addfirst
+ public static void addfirst(int data){
+        Node newnode = new Node(data);
+        if( head == null){
+            head =  tail = newnode;
+            return;
+        }
+        newnode.next =  head;
+        head =  newnode;
+    }
+    
+    public static void Display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"->");
+            temp = temp.next;
+        }
+    System.out.println("null");
+    }
+    
+    //check cycle loop or not 
+    
+    public static boolean isCycle(){
+        Node slow = head;
+        Node fast = head;
+        
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            
+            if(fast == slow ){
+                return true;
+            }
+            
+       
+        }
+             return false;
+    }
+    
+    public static void createCycle() {
+        if (tail != null) {
+            tail.next = head; // tail points back to head
+        }
+    }
+    
+    
+    public static void main(String[] args) {
+    LinkedList ll = new LinkedList();
+    ll.addfirst(1);
+    ll.addfirst(2);
+    ll.addfirst(3);
+    ll.Display();
+
+    ll.createCycle();
+    System.out.println("Has Cycle :"+ll.isCycle());
+   
+    }
+}
