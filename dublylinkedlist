@@ -1,0 +1,71 @@
+
+class DoublyList{
+    public static class Node {
+        int data;
+        Node next ;
+        Node prev;
+        
+        Node (int data){
+            this.data = data;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+    
+    public static Node head;
+    public static Node tail;
+    public static int size;
+    
+    public static void addFirst(int data){
+        Node newnode = new Node(data);
+        if(head == null){
+            head = tail = newnode;
+            return;
+        }
+        newnode.next = head;
+        head.prev = newnode;
+         head = newnode ;
+    }
+    
+    //addlast
+    
+    public static void addlast(int data){
+        
+        Node newnode = new Node(data);
+        if(head == null){
+            head = tail = newnode;
+            return;
+        }
+        tail.next = newnode;
+        newnode.prev = tail;
+        tail = newnode;
+    }
+    
+    //Display
+    
+    public static void Display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"<->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+    
+    
+    public static void main(String[] args) {
+        DoublyList dl = new DoublyList();
+        // dl.addFirst(1);
+        // dl.addFirst(2);
+        // dl.addFirst(3);
+        // dl.addFirst(4);
+        // dl.Display();
+        
+        
+        dl.addlast(1);
+        dl.addlast(2);
+        dl.addlast(3);
+        dl.addlast(4);
+        dl.Display();
+    }
+}
