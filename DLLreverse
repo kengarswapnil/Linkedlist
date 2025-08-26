@@ -1,0 +1,69 @@
+
+class DoubleyLinkedlist {
+    public static class Node {
+        int data;
+        Node next;
+        Node prev;
+        
+        Node(int data){
+            this.data =data;
+            this.next = null;
+            this.prev = null;
+        }
+    }
+    
+    public static Node head;
+    public static Node tail;
+    public static int size;
+    
+    //addfirst
+    
+    public static void addfirst(int data){
+        Node newnode = new Node(data);
+        if(head == null){
+            head = tail =newnode;
+            return;
+        }
+        newnode.next = head;
+        head.prev   = newnode;
+        head = newnode;
+    }
+    
+    //Display 
+    public static void display(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data + "<->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+        
+    }
+    
+    //reverse
+    public static void reverse(){
+        Node curr = head;
+        Node prev = null;
+        Node next;
+        
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+    
+    public static void main(String[] args) {
+        DoubleyLinkedlist dl = new DoubleyLinkedlist();
+        dl.addfirst(1);
+        dl.addfirst(2);
+        dl.addfirst(3);
+        dl.addfirst(4);
+        
+        dl.display();
+        dl.reverse();
+        dl.display();
+    }
+}
