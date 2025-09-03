@@ -1,0 +1,27 @@
+import java.util.*;
+class Main {
+    public static boolean isPallindrome(ArrayList<Character> list){
+      Stack<Character> s = new Stack<>();
+      
+      for(char ch :list){
+          s.push(ch);
+      }
+      
+      for(char ch :list){
+          if(ch != s.pop()){
+              return false;
+          }
+      }
+       return true;
+    
+    }
+    public static void main(String[] args) {
+        ArrayList<Character> list = new ArrayList<>();
+        list.add('M');
+        list.add('A');
+        list.add('D');
+        list.add('A');
+        list.add('M');
+        System.out.println(isPallindrome(list));
+    }
+}
